@@ -1,0 +1,3 @@
+Teamname:dl
+Realname:Denys Lazarenko
+Category:Student

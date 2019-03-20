@@ -1,3 +1,9 @@
-/fde18-bonusproject2/data
+fde18-bonusproject2/data/
+.idea/
+cmake-build-debug/
+build/
+fde18-bonusproject1/test/data/tpch/
+.gitlab-ci.yml
+.clang-format
 
 
