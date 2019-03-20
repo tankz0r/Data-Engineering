@@ -36,3 +36,5 @@ less than 10 minutes. The machine used for evaluation will have 64GB RAM and a 6
 the Spark project:  https://spark.apache.org/docs/2.2.0/.
 2.  Sbt: The Scala package manager.  http://www.scala-sbt.org/1.0/docs/Setup.html 
 3.  ```spark -shell -i trips.scala```
+
+## Solution
