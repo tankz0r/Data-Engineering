@@ -18,7 +18,7 @@ The chain length from an actor to himself is defined to be 0.
 20 seconds
 
 ### Solution 
-**Runtime(ms):** 15373
+**Runtime(ms):** 15373   
 0. `perf record` to indentify which parts of the program to optimize.
 1. Bidirectional BFS implemented. It usually discovers much fewer nodes than a one directional BF.
 2. `mmap` to reduce copying of data.
