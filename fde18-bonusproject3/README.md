@@ -18,12 +18,13 @@ The chain length from an actor to himself is defined to be 0.
 20 seconds
 
 ### Solution 
-1.  Make sure the implemented algorithm is reasonably efficient. In this case, BFS or how about bidirectional BFS? (The latter usually discovers much fewer nodes than a one directional BFS)
-2.  Check how much time is spent on which part of your program. Use the provided playedin.csv and run 50 (random) queries on it. Use perf record or measure time spent from within your program. This will show you which parts of the program to optimize next.
-3.  Possible issues: Too many memory allocations. Not all resources used (12 Threads are available on the server)
+**Runtime(ms):** 15373
+0. `perf record` to indentify which parts of the program to optimize.
+1. Bidirectional BFS implemented. It usually discovers much fewer nodes than a one directional BF.
+2. `mmap` to reduce copying of data.
+3. Multiple threads to run queries. (`std::async`)
 
 Besides that:
-- Do the parsing of playedin.csv in a single thread.
-- Use multiple threads to run queries. (std::async is your friend)
-- Instead of using unordered_map<Actor, unordered_set<Movie>> use a vector<vector<Movie>>. That allows for much faster access.
-- Do not use std::istringstream. This one is very slow. Instead, you can use std::iftream and the extract operator >>
+- Instead of using `unordered_map<Actor, unordered_set<Movie>>` a `vector<vector<Movie>>` is used. That allows for much faster access.
+- Instead of using `std::istringstream` a `std::iftream and the extract operator >>` was used.
+- `vector<bool>` was used to store visited nodes.
