@@ -33,4 +33,31 @@ make
 This creates the binaries test_all, bench and main.
 
 ## Solution
-
+**Runtime(ms):** 6567
+- Figuring out where a program spends time requires profiling: `perf record` && `perf report` && `perf stat -d`
+- ussage of `mmap` which gives a possibility to avoid copying the data by mapping the file into memory
+```C++
+int handle=open(argv[1],O RDONLY);
+lseek(handle,0,SEEK END);
+auto size=lseek(handle,0,SEEK CUR);
+auto
+data=mmap(nullptr,size,PROT READONLY,MAP SHARED,handle,0);
+```
+- blockwise terminator search
+```C++
+uint64 t block=*reinterpret cast<const uint64 t*>(iter);
+constexpr uint64 t high=0x8080808080808080ull;
+constexpr uint64 t low=0x7F7F7F7F7F7F7F7Full;
+constexpr uint64 t pattern=0x0A0A0A0A0A0A0A0Aull;
+uint64 t lowChars=( ̃block)&high;
+uint64 t found0A= ̃((((block&low)ˆpattern)+low)&high);
+uint64 t matches=matches0A&lowChars;
+```
+- parallelism
+``` C++
+unsigned chunks=thread::hardware concurrency();
+vector<thread>threads;
+for (unsigned index=1;index<chunks;++index)
+threads.push back(thread(sumChunk(index));
+sumChunk(0);
+```
