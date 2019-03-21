@@ -38,3 +38,16 @@ the Spark project:  https://spark.apache.org/docs/2.2.0/.
 3.  ```spark -shell -i trips.scala```
 
 ## Solution
+**Result(s):** 423.046
+- use bucketss 
+- Use as many dimensions for bucketing as possible   
+-> Increases dataset size by factor of 3 per 
+dimension 
+- Use few dimensions for bucketing  
+-> Many elements per bucket, large crossproducts 
+within buckets 
+
+## Possible improvements:
+- Instead of bucketing, sort input and look left and right 
+- [z-order curve](https://aws.amazon.com/blogs/database/z-order-indexing-for-multifaceted-queries-in-amazon-dynamodb-part-1/?sc_channel=sm&sc_campaign=zackblog&sc_country=global&sc_geo=global&sc_category=rds&sc_outcome=aware&adbsc=awsdbblog_social_20170517_72417147&adbid=864895517733470208&adbpl=tw&adbpr=66780587)
+- Other optimization: [Bloom filter](https://www.kdnuggets.com/2016/08/gentle-introduction-bloom-filter.html)
