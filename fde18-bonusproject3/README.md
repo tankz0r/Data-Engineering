@@ -19,10 +19,10 @@ The chain length from an actor to himself is defined to be 0.
 
 ### Solution 
 **Runtime(ms):** 15373   
-0. `perf record` to indentify which parts of the program to optimize.
-1. Bidirectional BFS implemented. It usually discovers much fewer nodes than a one directional BF.
-2. `mmap` to reduce copying of data.
-3. Multiple threads to run queries. (`std::async`)
+1. `perf record` to indentify which parts of the program to optimize.
+2. Bidirectional BFS implemented. It usually discovers much fewer nodes than a one directional BF.
+3. `mmap` to reduce copying of data.
+4. Multiple threads to run queries. (`std::async`)
 
 Besides that:
 - Instead of using `unordered_map<Actor, unordered_set<Movie>>` a `vector<vector<Movie>>` is used. That allows for much faster access.
